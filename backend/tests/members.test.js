@@ -1,5 +1,5 @@
-const request = require('supertest');
-const app = require('../app')
+import app from "../app"
+import request from "supertest"
 
 describe('Members API', () => {
   it('should get all members', async () => {
