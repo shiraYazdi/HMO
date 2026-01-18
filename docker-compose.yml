@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  backend:
+    image: my-backend
+    networks:
+      - app_net
+    secrets:
+      - mongo_uri
+    environment:
+      MONGO_URI_FILE: /run/secrets/mongo_uri
+    deploy:
+      replicas: 1
+
+  nginx:
+    image: my-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app_net
+    deploy:
+      replicas: 1
+
+networks:
+  app_net:
+
+secrets:
+  mongo_uri:
+    external: true
+
+
