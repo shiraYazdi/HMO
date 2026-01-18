@@ -13,5 +13,5 @@ describe('Members API', () => {
     const res = await request(app).post('/api/members').send(newMember);
     expect(res.statusCode).toEqual(201);
     expect(res.body.name).toBe('Test');
-  });
-;
+    });
+});
